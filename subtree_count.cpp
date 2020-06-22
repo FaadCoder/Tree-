@@ -15,10 +15,7 @@ public:
 		this->right=this->left=nullptr;
 	}
 };
-bool inrange(ll key,ll a,ll b)
-{
-	return (key>=a and key<=b);
-}
+
 tree *insert(tree *root,ll val)
 {
 	if(!root)
@@ -29,20 +26,26 @@ tree *insert(tree *root,ll val)
 		root->right=insert(root->right,val);
 	return root;
 }
+bool inrange(ll val,ll a,ll b)
+{
+	return (val>=a) and (val<=b);
+}
 bool go(tree *root,ll low,ll high,ll &cnt)
 {
-	if(!root)
+	if(root==nullptr)
 		return true;
+
 	if(go(root->left,low,high,cnt) and go(root->right,low,high,cnt) and inrange(root->val,low,high))
 	{
 		cnt++;
 		return true;
-	} 
+	}
 	return false;
+
 }
 int main()
 {
-	take_input;
+	// take_input;
 	fast;
 	tree *root=nullptr;
 	ll n;
@@ -53,9 +56,10 @@ int main()
 		cin>>val;
 		root=insert(root,val);
 	}
-	ll cnt=0;
 	ll low,high;
 	cin>>low>>high;
+	ll cnt=0;
+
 	go(root,low,high,cnt);
 	cout<<cnt<<endl;
 	return 0;
