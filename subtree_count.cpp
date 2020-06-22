@@ -1,3 +1,4 @@
+// Count subtree whose nodes lie in given range.
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
